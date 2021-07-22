@@ -1,6 +1,13 @@
+;;; init-org.el --- org
+
+
+;;; Commentary:
+;; 
 
 (require 'org-tempo)
 (require 'org-agenda)
+
+;;; Code:
 
 (use-package org
   :ensure nil
@@ -20,21 +27,25 @@
     (seq-filter (lambda(x) (not (string-match "/.git/"(file-name-directory x))))
 		(directory-files-recursively "~/org" "\\.org$")))
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "DOING(i)" "WAITING(w)" "|" "DONE(d)" "ABORT(a)")))
-   (setq org-capture-templates
+        '((sequence "TODO(t)" "DOING(i)" "WAITING(w@/!)" "|" "DONE(d!/!)" "ABORT(a@/!)")))
+  (setq org-capture-templates
         `(("i" "inbox" entry (file ,(concat org-directory "/inbox.org"))
-           "* TODO %?")
+           "** TODO %?")
           ("n" "Notes" entry (file+olp+datetree ,(concat org-directory "/notes.org"))
-           "* %?")
+           "** %?")
           ("r" "Roam Notes" entry (file+olp+datetree ,(concat org-directory "/notes/notes.org"))
-           "* %?")
+           "** %?")
           ("w" "Work Todo" entry (file ,(concat org-directory "/inbox.org"))
-           "* TODO %? :work:\n")
+           "** TODO %? :work:\n")
           ("t" "Task Todo" entry (file+headline ,(concat org-directory "/task.org") "Tasks")
-           "* TODO %? \n")
+           "** TODO %? \n")
           ("l" "Life Todo" entry (file ,(concat org-directory "/inbox.org"))
-           "* TODO %? :life:\n")
+           "** TODO %? :life:\n")
           ))
-   (setq org-agenda-window-setup 'current-window))
+  (setq org-todo-keyword-faces
+    (quote (("DOING" :foreground "cyan" :weight bold))))
+  (setq org-agenda-window-setup 'current-window))
 
 (provide 'init-org)
+
+;;; init-org.el ends here

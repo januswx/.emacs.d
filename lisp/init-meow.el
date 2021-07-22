@@ -13,6 +13,8 @@
    '("k" . meow-prev))
   (meow-leader-define-key
    ;; SPC j/k will run the original command in MOTION state.
+   '("n c" . org-capture)
+   '("n a" . org-agenda)
    '("j" . meow-motion-origin-command)
    '("k" . meow-motion-origin-command)
    ;; Use SPC (0-9) for digit arguments.

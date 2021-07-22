@@ -20,7 +20,7 @@
           scroll-step 1
           scroll-preserve-screen-position 'always)
     (set-frame-width (selected-frame) 130)
-    (set-frame-height (selected-frame) 40)))
+    (set-frame-height (selected-frame) 35)))
 
 (janus/optimize-screen)
 
@@ -34,19 +34,19 @@
 ;; function to set monofonts
 (defun janus/set-fonts ()
 ;;  "Set the fonts, inspired by URL `http://ergoemacs.org/emacs/emacs_list_and_set_font.html'"
-  (let ((default-fonts '("Sarasa Mono SC" "Courier New" "Ubuntu Mono" "Monaco" "Source Code Pro" "Menlo" "Consolas"))
+  (let ((default-fonts '("Sarasa Mono SC" "Source Code Pro" "Courier New" "Ubuntu Mono" "Monaco" "Menlo" "Consolas"))
         (emoji-fonts '("Apple Color Emoji" "Symbola" "Symbol"))
         (chinese-fonts '("楷体" "Microsoft Yahei" "Heiti SC" "WenQuanYi Micro Hei")))
     ;; set the default font
     (set-face-attribute 'default nil
                         :font (font-spec :name (janus/1st-available-font default-fonts)
-                                         :size 24))
+                                         :size 20))
     ;; set the emoji font
     (set-fontset-font t 'unicode (janus/1st-available-font emoji-fonts) nil 'prepend)
     ;; set Chinese font
     (set-fontset-font t '(#x4e00 . #x9fff)
                       (font-spec :name (janus/1st-available-font chinese-fonts)
-                                 :size 24))))
+                                 :size 20))))
 
 ;; 尝试解决字体卡顿问题
 (setq inhibit-compacting-font-caches t)
