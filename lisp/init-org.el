@@ -4,10 +4,14 @@
 ;;; Commentary:
 ;; 
 
+;;; Code:
+
+;;(custom-set-variables
+;; '(org-directory "e:/l2t/org")
+;; '(org-agenda-files (list org-directory)))
+
 (require 'org-tempo)
 (require 'org-agenda)
-
-;;; Code:
 
 (use-package org
   :ensure nil
@@ -25,7 +29,7 @@
   :config
   (setq org-agenda-files
     (seq-filter (lambda(x) (not (string-match "/.git/"(file-name-directory x))))
-		(directory-files-recursively "~/org" "\\.org$")))
+		(directory-files-recursively "e:/l2t/org" "\\.org$")))
   (setq org-todo-keywords
         '((sequence "TODO(t)" "DOING(i)" "WAITING(w@/!)" "|" "DONE(d!/!)" "ABORT(a@/!)")))
   (setq org-capture-templates
@@ -45,7 +49,7 @@
   (setq org-todo-keyword-faces
     (quote (("DOING" :foreground "cyan" :weight bold))))
   (setq org-agenda-window-setup 'current-window))
-
+(global-visual-line-mode t)
 (provide 'init-org)
 
 ;;; init-org.el ends here

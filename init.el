@@ -12,6 +12,7 @@
 ;; 
 
 (require 'init-elpa)
+(require 'init-func)
 (require 'init-meow)
 (require 'init-const)
 (require 'init-kbd)

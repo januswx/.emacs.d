@@ -13,6 +13,8 @@
    '("k" . meow-prev))
   (meow-leader-define-key
    ;; SPC j/k will run the original command in MOTION state.
+   '("f c" . goto-my-config-dir)
+   '("f n" . goto-my-notes-dir)
    '("n c" . org-capture)
    '("n a" . org-agenda)
    '("j" . meow-motion-origin-command)
